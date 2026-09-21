@@ -34,14 +34,22 @@
 | ต้นเหตุ | สถานะจอถูกตัดเป็น offline |
 | วิธีแก้ | boot-arg **`igfxonln=1`** (force display online) |
 
-**(ค) พอร์ตจอของเครื่องนี้ (ค้นพบจริง)**
+**(ค) จอ 2 จอ — ใช้ได้ ✅ (ยืนยันกับเครื่องจริง 2026-09-22)**
 
-- macOS สร้างคอนเนกเตอร์ 3 ตัว → port 5, 6, 7
-- **พอร์ต DP ใช้ได้** (DELL E2216H ขึ้นภาพ, สลับไป DP ช่องที่สองก็ใช้ได้)
-- **พอร์ต HDMI ขับด้วย macOS ไม่ได้** — ลองประกาศ type HDMI ที่ port 5 และ port 7 แล้วไม่ขึ้นทั้งคู่
-  (น่าจะเป็นข้อจำกัด BIOS/VBT) ⇒ **ได้ 1 จอเสมอ จากการทดลองทุกมุม**
+| จอ | ความละเอียด | พอร์ต / connector-type (จาก `ioreg`) |
+|---|---|---|
+| จอ 1920×1080 | 1920×1080 @60Hz | port 6 · `00040000` (DP) |
+| DELL E1914H | 1366×768 @60Hz | port 5 · `00080000` (HDMI) — ผ่านอะแดปเตอร์ VGA |
+
+- ค่าที่ทำให้ได้ 2 จอ: `framebuffer-con1-type = 00080000` (HDMI) + `framebuffer-con2-type = 00040000` (DP)
+  ร่วมกับ `AAPL,ig-platform-id = 00001659` และ boot-arg `igfxonln=1`
+- หลักฐาน: `system_profiler SPDisplaysDataType` เห็น 2 จอ (mirror off, online yes ทั้งคู่) ·
+  `ioreg` พบ `IODisplayConnect` active ทั้ง port 5 และ port 6 · EDID อ่านได้ 2
 - ❗ **`-alldata` + ประกาศ 3 คอนเนกเตอร์ ทำให้จอดับ** — ให้ใช้แบบ `-type` ธรรมดา (con1=HDMI, con2=DP)
-- ตัวเลือกที่ยังไม่ได้ลอง: SMBIOS `Macmini8,1`
+- หมายเหตุสี: `Framebuffer Depth` เป็น **30-Bit Color** ทั้ง 2 จอ แต่สีถูกต้อง
+  ⇒ 30-bit ไม่ใช่สาเหตุของสีเพี้ยน (สาเหตุคือ SMBIOS `iMac18,3`) — ไม่ต้องไปบังคับ 24-bit
+- เอกสารเดิมของชุดนี้เขียนว่า "2 จอทำไม่ได้" — **ล้าสมัย** ดู
+  `configs/dell-precision-t3420/macos-sequoia-15.7/notes/DISPLAY-CHECK-2026-09-22.md`
 
 **(ง) USB 3.0 ไม่ทำงาน**
 

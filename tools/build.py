@@ -205,24 +205,30 @@ LOCAL_ENTRIES = [
                                 "`framebuffer-patch-enable` · `framebuffer-con1-type=HDMI` · "
                                 "`framebuffer-con2-type=DP` · `enable-hdmi-dividers-fix` · "
                                 "`framebuffer-stolenmem=00003001` (≈19 MB)"),
-            ("จอ / Display", "DELL E2216H 1920×1080 @60Hz — ต่อผ่าน **DP** (พอร์ต DP ทุกช่องใช้ได้)"),
-            ("จอพร้อมกัน", "**1 จอ** — เอกสารใน zip ระบุว่า 2 จอพร้อมกัน (HDMI + DP) **ทำไม่ได้** บนเครื่องนี้"),
+            ("จอ / Display", "**2 จอ** — จอ 1920×1080 (port 6 · `connector-type=DP`) และ DELL E1914H "
+                             "1366×768 (port 5 · `connector-type=HDMI` ผ่านอะแดปเตอร์ VGA)"),
+            ("จอพร้อมกัน", "✅ **2 จอพร้อมกัน** — ยืนยันจากเครื่องจริง 2026-09-22 "
+                          "(`system_profiler` + `ioreg`) ดู `notes/DISPLAY-CHECK-2026-09-22.md`"),
             ("USB", "USB 2.0 (XHCI) 15 พอร์ต · **USB 3.0 SuperSpeed ไม่ถูกสร้าง** → อุปกรณ์ USB3 ต้องต่อพอร์ต USB2"),
             ("ธีม / Theme", "GoldenGate (`PickerMode=External`, `PickerVariant=Acidanthera\\GoldenGate`)"),
             ("macOS", "Sequoia 15.7.9 (24G830)"),
         ],
         efi=[("EFI-Dell-Precision-3420.zip", "d712d5aee660aed97d952033398ae9d7")],
         screenshots=[],
-        notes=["EFI-Dell-Precision-3420.md"],
+        notes=["EFI-Dell-Precision-3420.md", "DISPLAY-CHECK-2026-09-22.md"],
         observations=[
             "**จุดสำคัญที่แก้สำเร็จ:** สีเพี้ยน (Framebuffer Depth 30-bit) แก้ด้วยการเปลี่ยน SMBIOS "
             "จาก `iMac18,3` เป็น **`MacPro7,1`** และอาการจอค้าง/ดับหลังเข้าหน้าจอ แก้ด้วย boot-arg "
             "**`igfxonln=1`**",
-            "⚠️ **ยังไม่ยืนยันเรื่อง 2 จอ** — เอกสารใน zip (อัปเดต 2026-09-22 04:40) ระบุว่า "
-            "**2 จอพร้อมกัน (HDMI + DP) ทำไม่ได้บนเครื่องนี้**: พอร์ต HDMI ขับด้วย macOS ไม่ได้ "
-            "(ลองประกาศ type HDMI ที่ port 5 และ port 7 แล้วไม่ขึ้นทั้งคู่ — น่าจะเป็นข้อจำกัด BIOS/VBT) "
-            "และได้ **1 จอผ่าน DP เสมอ** · ตัวเลือกที่ยังไม่ได้ลอง: SMBIOS `Macmini8,1` · "
-            "(ผู้ใช้อัปโหลดไฟล์นี้พร้อมข้อความว่าใช้ได้ 2 จอแล้ว — **ขัดกับเอกสารที่แนบมา** จึงยังไม่ยืนยัน)",
+            "✅ **2 จอพร้อมกันใช้ได้จริง** — ตรวจกับเครื่องจริง 2026-09-22: `system_profiler` เห็น 2 จอ "
+            "(1920×1080 + DELL E1914H 1366×768) และ `ioreg` พบ `IODisplayConnect` active ทั้ง "
+            "port 5 (`connector-type=HDMI`) และ port 6 (`connector-type=DP`) · "
+            "ค่าที่ใช้: `framebuffer-con1-type=00080000` + `framebuffer-con2-type=00040000`",
+            "⚠️ เอกสาร `notes/EFI-Dell-Precision-3420.md` (อัปเดต 04:40) ยังเขียนว่า "
+            "'2 จอ (HDMI + DP) ❌ ทำไม่ได้' — **ข้อความนั้นล้าสมัย** ให้ยึดผลตรวจใน "
+            "`notes/DISPLAY-CHECK-2026-09-22.md` (ยังเก็บเอกสารเดิมไว้ตามต้นฉบับ ไม่แก้ข้อความ)",
+            "หมายเหตุสี: `Framebuffer Depth` รายงาน **30-Bit Color** ทั้ง 2 จอ แต่สีถูกต้อง "
+            "⇒ 30-bit ไม่ใช่สาเหตุของสีเพี้ยน (สาเหตุคือ SMBIOS `iMac18,3`) อย่าไปไล่บังคับเป็น 24-bit",
             "เวอร์ชันนี้เปลี่ยน `framebuffer-con2-type` จาก `00080000` (HDMI) → **`00040000` (DP)** "
             "เพื่อให้พอร์ต DP ของเครื่องใช้งานได้",
             "**อย่าใช้ `-alldata` + ประกาศ 3 คอนเนกเตอร์** — ทำให้จอดับ ให้ใช้แบบ `-type` ธรรมดา "

@@ -15,7 +15,7 @@
 > (High Sierra / Sierra / **Sequoia 15.7.9**), Dell T7450 AIO, HP Pavilion 24-b212d, **Mac Pro Late 2013 (Sequoia)**
 >
 > ที่น่าสนใจสุดคือชุด **Dell + Sequoia**: จุดที่ทำให้สำเร็จคือเปลี่ยน SMBIOS เป็น `MacPro7,1`
-> (แก้สีเพี้ยน ฟ้า↔ส้ม) และ boot-arg `igfxonln=1` (แก้จอค้าง/ดับหลังเข้าหน้าจอ) — เขียนไว้ละเอียดใน repo
+> (แก้สีเพี้ยน ฟ้า↔ส้ม), boot-arg `igfxonln=1` (แก้จอค้าง/ดับหลังเข้าหน้าจอ) และเปิด **2 จอพร้อมกัน (HDMI + DP)** — เขียนไว้ละเอียดใน repo
 >
 > 👉 https://github.com/sealfx/EFI-OSX86
 > ⚠️ EFI ผูกกับฮาร์ดแวร์รุ่นนั้น ๆ และห้ามใช้ serial ที่แถมมา ให้สร้าง SMBIOS ของตัวเองก่อนใช้
@@ -35,7 +35,7 @@
 > HP Pavilion 24-b212d, **Mac Pro Late 2013 (Sequoia, OCLP-style)**.
 >
 > Most interesting is the Dell + Sequoia set: the fix was switching SMBIOS to `MacPro7,1`
-> (color inversion / 30-bit framebuffer) plus boot-arg `igfxonln=1` (black screen after boot).
+> (color inversion / 30-bit framebuffer), boot-arg `igfxonln=1` (black screen after boot), and getting **dual displays (HDMI + DP)** working.
 > There's a troubleshooting write-up with what was tested and ruled out.
 >
 > 👉 https://github.com/sealfx/EFI-OSX86
