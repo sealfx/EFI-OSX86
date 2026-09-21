@@ -1,0 +1,48 @@
+name: ✅ แจ้งว่าใช้ได้ / Report a working setup
+description: แจ้งว่า EFI ชุดไหนใช้ได้กับเครื่องอะไร — ช่วยให้ repo เป็นฐานข้อมูลจริง
+title: "[WORKING] <machine> — <macOS>"
+labels: ["working-config"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ขอบคุณที่ช่วยรายงาน! ข้อมูลนี้จะถูกนำไปใส่ในเอกสารของ repo
+  - type: input
+    id: config
+    attributes:
+      label: EFI ที่ใช้
+      placeholder: configs/dell-precision-t3420/macos-sequoia-15.7/
+    validations:
+      required: true
+  - type: input
+    id: machine
+    attributes:
+      label: เครื่อง / รุ่น
+      placeholder: Dell Precision T3420 (i7-7700)
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS + build
+      placeholder: Sequoia 15.7.9 (24G830)
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: ผลลัพธ์
+      options:
+        - บูตได้ทุกอย่างปกติ
+        - บูตได้แต่มีบางอย่างไม่ทำงาน
+        - บูตได้แต่ต้องแก้อะไรเพิ่ม
+    validations:
+      required: true
+  - type: textarea
+    id: spec
+    attributes:
+      label: สเปกเครื่อง (CPU / GPU / เสียง / เน็ต / จอ)
+  - type: textarea
+    id: notes
+    attributes:
+      label: สิ่งที่ต้องแก้เพิ่ม / หมายเหตุ

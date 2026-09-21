@@ -54,6 +54,8 @@ bash tools/sync.sh
 | [`docs/HARDWARE-MATRIX.md`](./docs/HARDWARE-MATRIX.md) | ตารางฮาร์ดแวร์ทุกเครื่องในที่เดียว |
 | [`docs/CREDITS.md`](./docs/CREDITS.md) | โครงการต้นทาง + kext/เวอร์ชันที่ตรวจพบจริง |
 | [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) | กติกาการแก้ไข (SOP) และวิธีเพิ่มเครื่องใหม่ |
+| [`docs/TROUBLESHOOTING.md`](./docs/TROUBLESHOOTING.md) | รวมอาการ/ต้นเหตุ/วิธีแก้ที่บันทึกไว้จากแต่ละชุด |
+| [`docs/SHARE.md`](./docs/SHARE.md) | ข้อความสำหรับแชร์ repo ไปยังชุมชน (พร้อมใช้) |
 
 ## หมายเหตุ / Notes
 
@@ -61,3 +63,9 @@ bash tools/sync.sh
 - ทุกไฟล์มี md5 บันทึกใน [`MANIFEST.md5`](./MANIFEST.md5)
 - โครงการ/kext ต้นทางดูที่ [`docs/CREDITS.md`](./docs/CREDITS.md)
 - EFI เหล่านี้มาจากเครื่องจริงที่เคยใช้งานได้ ณ เวอร์ชัน macOS ที่ระบุ การนำไปใช้กับเครื่องอื่นต้องปรับ `config.plist` / SMBIOS เอง
+
+## สัญญาอนุญาต / License
+
+เนื้อหาที่ repo นี้สร้างเอง (เอกสาร, README, สคริปต์ใน `tools/`) = **MIT** — ดู [`LICENSE`](./LICENSE)
+
+ส่วนไบนารีของบุคคลที่สาม (OpenCore, kext ต่าง ๆ) เป็นไปตามสัญญาอนุญาตของโครงการต้นทาง แต่ละโครงการ — ดู [`docs/CREDITS.md`](./docs/CREDITS.md)

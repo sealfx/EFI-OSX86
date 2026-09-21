@@ -1,0 +1,47 @@
+name: 🐞 แจ้งปัญหา / Bug report
+description: บูตไม่ขึ้น หรือมีอะไรไม่ทำงาน
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ก่อนเปิด issue กรุณาอ่าน [HOW-TO-USE](https://github.com/sealfx/EFI-OSX86/blob/main/docs/HOW-TO-USE.md)
+        และ [TROUBLESHOOTING](https://github.com/sealfx/EFI-OSX86/blob/main/docs/TROUBLESHOOTING.md) ก่อน
+  - type: input
+    id: config
+    attributes:
+      label: EFI ที่ใช้
+    validations:
+      required: true
+  - type: input
+    id: md5
+    attributes:
+      label: md5 ของ zip ที่โหลดมา
+      description: เทียบกับ MANIFEST.md5 แล้วหรือยัง?
+    validations:
+      required: true
+  - type: textarea
+    id: spec
+    attributes:
+      label: สเปกเครื่อง
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: อาการที่เกิด
+    validations:
+      required: true
+  - type: textarea
+    id: verbose
+    attributes:
+      label: ข้อความ verbose (-v) หรือไฟล์ log
+      description: แนบรูปหน้าจอ verbose หรือข้อความจาก Misc > Debug > Target = 67
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: ยืนยัน
+      options:
+        - label: ฉันสร้าง SMBIOS serial ของตัวเองแล้ว (ไม่ได้ใช้ค่าที่แถมมา)
+        - label: ฉันตรวจ md5 ของไฟล์แล้วว่าตรงกับ MANIFEST.md5

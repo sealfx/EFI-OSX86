@@ -207,7 +207,7 @@ LOCAL_ENTRIES = [
             ("ธีม / Theme", "GoldenGate (`PickerMode=External`, `PickerVariant=Acidanthera\\GoldenGate`)"),
             ("macOS", "Sequoia 15.7.9 (24G830)"),
         ],
-        efi=[("EFI-Dell-Precision-3420.zip", "564dc53c43a240fef881c2d548f18f08")],
+        efi=[("EFI-Dell-Precision-3420.zip", "29068d3fb8d250364cf6fecf5d2761f7")],
         screenshots=[],
         notes=["EFI-Dell-Precision-3420.md"],
         observations=[
@@ -223,6 +223,11 @@ LOCAL_ENTRIES = [
             "ติดมาด้วย — เก็บไว้ตามต้นฉบับ ไม่ได้ตัดออก",
             "เครื่องนี้มี 2 EFI ที่สลับเองได้ → ฝัง marker ใน boot-args (`espm=efi` = EFI หลัก, "
             "`espm=boot` = EFI สำรอง) ชุดนี้เป็น `espm=boot`",
+            "🔒 **ไฟล์นี้ถูก sanitize ก่อนเผยแพร่** — ล้าง `SystemSerialNumber`, `MLB`, `SystemUUID`, "
+            "`ROM` ในไฟล์ `config.plist*` ทุกไฟล์ภายใน zip (30 ไฟล์) แล้ว โดย**คง `SystemProductName = "
+            "MacPro7,1` ไว้** เพราะเป็นค่าที่จำเป็นต่อการใช้งาน · md5 ปัจจุบัน "
+            "`29068d3fb8d250364cf6fecf5d2761f7` (ต่างจากไฟล์ต้นฉบับที่อัปโหลด `564dc53c43a240fef881c2d548f18f08`) "
+            "→ **ต้องสร้าง SMBIOS ของตัวเองก่อนใช้**",
         ],
     ),
     dict(
@@ -507,6 +512,8 @@ def main() -> int:
     root.append("| [`docs/HARDWARE-MATRIX.md`](./docs/HARDWARE-MATRIX.md) | ตารางฮาร์ดแวร์ทุกเครื่องในที่เดียว |")
     root.append("| [`docs/CREDITS.md`](./docs/CREDITS.md) | โครงการต้นทาง + kext/เวอร์ชันที่ตรวจพบจริง |")
     root.append("| [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) | กติกาการแก้ไข (SOP) และวิธีเพิ่มเครื่องใหม่ |")
+    root.append("| [`docs/TROUBLESHOOTING.md`](./docs/TROUBLESHOOTING.md) | รวมอาการ/ต้นเหตุ/วิธีแก้ที่บันทึกไว้จากแต่ละชุด |")
+    root.append("| [`docs/SHARE.md`](./docs/SHARE.md) | ข้อความสำหรับแชร์ repo ไปยังชุมชน (พร้อมใช้) |")
     root.append("")
     root.append("## หมายเหตุ / Notes")
     root.append("")
@@ -515,6 +522,13 @@ def main() -> int:
     root.append("- โครงการ/kext ต้นทางดูที่ [`docs/CREDITS.md`](./docs/CREDITS.md)")
     root.append("- EFI เหล่านี้มาจากเครื่องจริงที่เคยใช้งานได้ ณ เวอร์ชัน macOS ที่ระบุ "
                 "การนำไปใช้กับเครื่องอื่นต้องปรับ `config.plist` / SMBIOS เอง")
+    root.append("")
+    root.append("## สัญญาอนุญาต / License")
+    root.append("")
+    root.append("เนื้อหาที่ repo นี้สร้างเอง (เอกสาร, README, สคริปต์ใน `tools/`) = **MIT** — ดู [`LICENSE`](./LICENSE)")
+    root.append("")
+    root.append("ส่วนไบนารีของบุคคลที่สาม (OpenCore, kext ต่าง ๆ) เป็นไปตามสัญญาอนุญาตของโครงการต้นทาง "
+                "แต่ละโครงการ — ดู [`docs/CREDITS.md`](./docs/CREDITS.md)")
     root.append("")
     with open(os.path.join(REPO, "README.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(root))

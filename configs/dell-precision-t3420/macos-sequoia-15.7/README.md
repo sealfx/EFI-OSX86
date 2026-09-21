@@ -23,7 +23,7 @@
 
 | ไฟล์ | md5 |
 |---|---|
-| [`EFI-Dell-Precision-3420.zip`](./EFI-Dell-Precision-3420.zip) | `564dc53c43a240fef881c2d548f18f08` |
+| [`EFI-Dell-Precision-3420.zip`](./EFI-Dell-Precision-3420.zip) | `29068d3fb8d250364cf6fecf5d2761f7` |
 
 ## เอกสารต้นฉบับ / Original notes
 
@@ -36,6 +36,7 @@
 - ค่าที่สกัดจาก `OC/config.plist` ตรงกับเอกสารทุกจุด (SMBIOS, boot-args, ig-platform-id, stolenmem)
 - ใน zip มีไฟล์สำรอง `config.plist.bak1..bak22`, `config.plist.presafe-*` และ `_old-kexts/` ติดมาด้วย — เก็บไว้ตามต้นฉบับ ไม่ได้ตัดออก
 - เครื่องนี้มี 2 EFI ที่สลับเองได้ → ฝัง marker ใน boot-args (`espm=efi` = EFI หลัก, `espm=boot` = EFI สำรอง) ชุดนี้เป็น `espm=boot`
+- 🔒 **ไฟล์นี้ถูก sanitize ก่อนเผยแพร่** — ล้าง `SystemSerialNumber`, `MLB`, `SystemUUID`, `ROM` ในไฟล์ `config.plist*` ทุกไฟล์ภายใน zip (30 ไฟล์) แล้ว โดย**คง `SystemProductName = MacPro7,1` ไว้** เพราะเป็นค่าที่จำเป็นต่อการใช้งาน · md5 ปัจจุบัน `29068d3fb8d250364cf6fecf5d2761f7` (ต่างจากไฟล์ต้นฉบับที่อัปโหลด `564dc53c43a240fef881c2d548f18f08`) → **ต้องสร้าง SMBIOS ของตัวเองก่อนใช้**
 
 ## วิธีใช้ / Usage
 
