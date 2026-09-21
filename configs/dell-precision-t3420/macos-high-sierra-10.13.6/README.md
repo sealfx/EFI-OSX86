@@ -24,11 +24,29 @@
 
 ## ภาพหน้าจอ / Screenshots
 
-- [`screenshots/Screen_Audio_AlC255.png`](./screenshots/Screen_Audio_AlC255.png)
-- [`screenshots/Screen_Dell_Precision_T3420.png`](./screenshots/Screen_Dell_Precision_T3420.png)
-- [`screenshots/Screen_Ethernet.png`](./screenshots/Screen_Ethernet.png)
-- [`screenshots/Screen_Hight_Sierra_10.13.6.png`](./screenshots/Screen_Hight_Sierra_10.13.6.png)
-- [`screenshots/Screen_Nvidia_Quadro_K1200.png`](./screenshots/Screen_Nvidia_Quadro_K1200.png)
+<details><summary>คลิกเพื่อดูภาพทั้งหมด (5 ภาพ)</summary>
+
+**Screen_Audio_AlC255.png**
+
+![`Screen_Audio_AlC255.png`](./screenshots/Screen_Audio_AlC255.png)
+
+**Screen_Dell_Precision_T3420.png**
+
+![`Screen_Dell_Precision_T3420.png`](./screenshots/Screen_Dell_Precision_T3420.png)
+
+**Screen_Ethernet.png**
+
+![`Screen_Ethernet.png`](./screenshots/Screen_Ethernet.png)
+
+**Screen_Hight_Sierra_10.13.6.png**
+
+![`Screen_Hight_Sierra_10.13.6.png`](./screenshots/Screen_Hight_Sierra_10.13.6.png)
+
+**Screen_Nvidia_Quadro_K1200.png**
+
+![`Screen_Nvidia_Quadro_K1200.png`](./screenshots/Screen_Nvidia_Quadro_K1200.png)
+
+</details>
 
 ## วิธีใช้ / Usage
 

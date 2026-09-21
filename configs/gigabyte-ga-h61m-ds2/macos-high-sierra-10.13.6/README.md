@@ -24,10 +24,25 @@
 
 ## ภาพหน้าจอ / Screenshots
 
-- [`screenshots/Screen_Audio.png`](./screenshots/Screen_Audio.png)
-- [`screenshots/Screen_GFX_Readion_RX570.png`](./screenshots/Screen_GFX_Readion_RX570.png)
-- [`screenshots/Screen_Network.png`](./screenshots/Screen_Network.png)
-- [`screenshots/Screen_Osx_Hightsierra10.13.6.png`](./screenshots/Screen_Osx_Hightsierra10.13.6.png)
+<details><summary>คลิกเพื่อดูภาพทั้งหมด (4 ภาพ)</summary>
+
+**Screen_Audio.png**
+
+![`Screen_Audio.png`](./screenshots/Screen_Audio.png)
+
+**Screen_GFX_Readion_RX570.png**
+
+![`Screen_GFX_Readion_RX570.png`](./screenshots/Screen_GFX_Readion_RX570.png)
+
+**Screen_Network.png**
+
+![`Screen_Network.png`](./screenshots/Screen_Network.png)
+
+**Screen_Osx_Hightsierra10.13.6.png**
+
+![`Screen_Osx_Hightsierra10.13.6.png`](./screenshots/Screen_Osx_Hightsierra10.13.6.png)
+
+</details>
 
 ## วิธีใช้ / Usage
 

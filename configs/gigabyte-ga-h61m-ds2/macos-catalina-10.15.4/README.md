@@ -24,10 +24,25 @@
 
 ## ภาพหน้าจอ / Screenshots
 
-- [`screenshots/Screen_Audio_Device.png`](./screenshots/Screen_Audio_Device.png)
-- [`screenshots/Screen_GFX_Readion_RX570.png`](./screenshots/Screen_GFX_Readion_RX570.png)
-- [`screenshots/Screen_Network.png`](./screenshots/Screen_Network.png)
-- [`screenshots/Screen_Osx_Catalina10.15.4.png`](./screenshots/Screen_Osx_Catalina10.15.4.png)
+<details><summary>คลิกเพื่อดูภาพทั้งหมด (4 ภาพ)</summary>
+
+**Screen_Audio_Device.png**
+
+![`Screen_Audio_Device.png`](./screenshots/Screen_Audio_Device.png)
+
+**Screen_GFX_Readion_RX570.png**
+
+![`Screen_GFX_Readion_RX570.png`](./screenshots/Screen_GFX_Readion_RX570.png)
+
+**Screen_Network.png**
+
+![`Screen_Network.png`](./screenshots/Screen_Network.png)
+
+**Screen_Osx_Catalina10.15.4.png**
+
+![`Screen_Osx_Catalina10.15.4.png`](./screenshots/Screen_Osx_Catalina10.15.4.png)
+
+</details>
 
 ## วิธีใช้ / Usage
 

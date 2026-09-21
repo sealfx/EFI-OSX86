@@ -39,8 +39,25 @@ bash tools/verify_md5.sh
 bash tools/sync.sh
 ```
 
+## ⚠️ ก่อนใช้งาน / Before you start
+
+1. **EFI เหล่านี้ผูกกับฮาร์ดแวร์รุ่นนั้น ๆ** — เครื่องต่างรุ่นใช้แทนกันไม่ได้รับประกัน ต้องปรับ `config.plist` (SMBIOS, device properties) เองก่อนใช้
+2. **สร้าง SMBIOS serial ของคุณเองก่อนใช้งาน** (เช่นด้วย GenSMBIOS) — **อย่าใช้ serial/MLB/UUID ที่ติดมากับไฟล์** เพราะจะซ้ำกับคนอื่นและทำให้ iCloud/iMessage มีปัญหา
+3. ตรวจ md5 ของไฟล์ที่ดาวน์โหลดให้ตรงกับ [`MANIFEST.md5`](./MANIFEST.md5) ก่อนใช้ทุกครั้ง
+4. สำรอง EFI ที่ใช้อยู่เดิมก่อนเขียนทับ
+
+## เอกสาร / Documentation
+
+| เอกสาร | เนื้อหา |
+|---|---|
+| [`docs/HOW-TO-USE.md`](./docs/HOW-TO-USE.md) | ขั้นตอนใช้งานจริง: mount ESP, สำรอง, คัดลอก EFI, สร้าง serial, reset NVRAM |
+| [`docs/HARDWARE-MATRIX.md`](./docs/HARDWARE-MATRIX.md) | ตารางฮาร์ดแวร์ทุกเครื่องในที่เดียว |
+| [`docs/CREDITS.md`](./docs/CREDITS.md) | โครงการต้นทาง + kext/เวอร์ชันที่ตรวจพบจริง |
+| [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) | กติกาการแก้ไข (SOP) และวิธีเพิ่มเครื่องใหม่ |
+
 ## หมายเหตุ / Notes
 
 - ไฟล์ EFI เก็บเป็น zip ต้นฉบับ **ไม่แตกและไม่บีบอัดใหม่** เพื่อรักษาไบต์เดิม
 - ทุกไฟล์มี md5 บันทึกใน [`MANIFEST.md5`](./MANIFEST.md5)
+- โครงการ/kext ต้นทางดูที่ [`docs/CREDITS.md`](./docs/CREDITS.md)
 - EFI เหล่านี้มาจากเครื่องจริงที่เคยใช้งานได้ ณ เวอร์ชัน macOS ที่ระบุ การนำไปใช้กับเครื่องอื่นต้องปรับ `config.plist` / SMBIOS เอง

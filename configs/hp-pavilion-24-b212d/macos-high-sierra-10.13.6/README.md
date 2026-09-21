@@ -25,11 +25,29 @@
 
 ## ภาพหน้าจอ / Screenshots
 
-- [`screenshots/Screen_Audio.png`](./screenshots/Screen_Audio.png)
-- [`screenshots/Screen_Ethernet.png`](./screenshots/Screen_Ethernet.png)
-- [`screenshots/Screen_Hardware.png`](./screenshots/Screen_Hardware.png)
-- [`screenshots/Screen_Hight_Siera_10.13.6.png`](./screenshots/Screen_Hight_Siera_10.13.6.png)
-- [`screenshots/Screen_Intel_Gfx_HD_630.png`](./screenshots/Screen_Intel_Gfx_HD_630.png)
+<details><summary>คลิกเพื่อดูภาพทั้งหมด (5 ภาพ)</summary>
+
+**Screen_Audio.png**
+
+![`Screen_Audio.png`](./screenshots/Screen_Audio.png)
+
+**Screen_Ethernet.png**
+
+![`Screen_Ethernet.png`](./screenshots/Screen_Ethernet.png)
+
+**Screen_Hardware.png**
+
+![`Screen_Hardware.png`](./screenshots/Screen_Hardware.png)
+
+**Screen_Hight_Siera_10.13.6.png**
+
+![`Screen_Hight_Siera_10.13.6.png`](./screenshots/Screen_Hight_Siera_10.13.6.png)
+
+**Screen_Intel_Gfx_HD_630.png**
+
+![`Screen_Intel_Gfx_HD_630.png`](./screenshots/Screen_Intel_Gfx_HD_630.png)
+
+</details>
 
 ## ข้อสังเกต / Observations
 

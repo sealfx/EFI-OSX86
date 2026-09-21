@@ -24,11 +24,29 @@
 
 ## ภาพหน้าจอ / Screenshots
 
-- [`screenshots/Screen_Audio.png`](./screenshots/Screen_Audio.png)
-- [`screenshots/Screen_Dell_Precision_7450_Spec.png`](./screenshots/Screen_Dell_Precision_7450_Spec.png)
-- [`screenshots/Screen_GFX_HD_630.png`](./screenshots/Screen_GFX_HD_630.png)
-- [`screenshots/Screen_MacOs_Hight_Sierra_10.13.6.png`](./screenshots/Screen_MacOs_Hight_Sierra_10.13.6.png)
-- [`screenshots/Screen_Nvme_M2_Sansung.png`](./screenshots/Screen_Nvme_M2_Sansung.png)
+<details><summary>คลิกเพื่อดูภาพทั้งหมด (5 ภาพ)</summary>
+
+**Screen_Audio.png**
+
+![`Screen_Audio.png`](./screenshots/Screen_Audio.png)
+
+**Screen_Dell_Precision_7450_Spec.png**
+
+![`Screen_Dell_Precision_7450_Spec.png`](./screenshots/Screen_Dell_Precision_7450_Spec.png)
+
+**Screen_GFX_HD_630.png**
+
+![`Screen_GFX_HD_630.png`](./screenshots/Screen_GFX_HD_630.png)
+
+**Screen_MacOs_Hight_Sierra_10.13.6.png**
+
+![`Screen_MacOs_Hight_Sierra_10.13.6.png`](./screenshots/Screen_MacOs_Hight_Sierra_10.13.6.png)
+
+**Screen_Nvme_M2_Sansung.png**
+
+![`Screen_Nvme_M2_Sansung.png`](./screenshots/Screen_Nvme_M2_Sansung.png)
+
+</details>
 
 ## ข้อสังเกต / Observations
 
