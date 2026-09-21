@@ -8,5 +8,7 @@
 | Dell Precision T3420 | Sierra 10.12.x | Intel Core i7-7700 (Quad Core, 8MB Cache, 3.6GHz, Turbo up to 4.20GHz) | Intel C236 | 16GB (1 x 16GB) DDR4 2400MHz UDIMM Non-ECC | NVIDIA Quadro K1200 4GB (4 x mDP, Low Profile) | Integrated (Onboard) | - | 256GB SSD | - | `EFI_DELL_Precision_T3420_Sierra.zip` |
 | Dell Precision T7450 AIO (23.8" All-in-One) | High Sierra 10.13.6 | Intel Core i5-7500 | - | 16GB DDR4 | Intel HD Graphics 630 (ใช้ได้) | - | - | 256GB SSD (+ NVMe M.2 Samsung ตาม screenshot) | 23.8" FHD Touch | `EFI_DELL_Precision_T7450_AIO.zip` |
 | HP Pavilion 24-b212d Z8G27AA#AKL (23.8" All-in-One) | High Sierra 10.13.6 | Intel Core i5-7400T 2.4GHz | - | 16GB DDR4 2133MHz | Intel HD Graphics 630 — ใช้งานได้ | - | - | - | 23.8" FHD IPS Touch | `EFI_HP_Pavilion_24-b212d_Z8G27AA_AKL_AIO.zip` |
+| Dell Precision T3420 (i7-7700 + iGPU) | Sequoia 15.7.9 (24G830) | Intel Core i7-7700 | - | - | Intel HD Graphics 630 (iGPU) — เร่งความเร็วได้ 1536 MB, Metal 3 | - | - | - | - | `EFI-Dell-Precision-3420.zip` |
+| Apple Mac Pro (Late 2013) | Sequoia 15.x — อ้างจากชื่อไฟล์ (ไม่ได้ระบุเลขเวอร์ชันย่อย) | - | - | - | - | - | - | - | - | `EFI-Macpro-Late2013-Sequoia.zip` |
 
 _สร้างโดย tools/build.py_

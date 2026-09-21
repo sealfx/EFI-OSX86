@@ -1,6 +1,6 @@
 bd6b43e58b62e80c8828773bb248fb03  .gitattributes
 f770ad2afeb2aa9130ac499ae676822b  .gitignore
-7b690e57fa443a603591d4c29039d0c6  README.md
+3ed5580908dba4a8d7a86b3efc4b530a  README.md
 fde2dbb0bbb21f8ff8c0cd53d360b81c  TEMPLATE.md
 b0bedbcdf7e93a5780477dc8a168aeef  configs/dell-precision-t3420/macos-high-sierra-10.13.6/EFI_DELL_Precision_T3420_Hight_Sierra.zip
 decbcb96f0132baa8863b01878f9ecaa  configs/dell-precision-t3420/macos-high-sierra-10.13.6/README.md
@@ -9,6 +9,9 @@ bb60199134d2024a5381379a456d4095  configs/dell-precision-t3420/macos-high-sierra
 d777c2949e2617a76ff799c2212acd11  configs/dell-precision-t3420/macos-high-sierra-10.13.6/screenshots/Screen_Ethernet.png
 a70fafadd08dac699c5cc58302c70d88  configs/dell-precision-t3420/macos-high-sierra-10.13.6/screenshots/Screen_Hight_Sierra_10.13.6.png
 70bb102249a8e565840924bffd366079  configs/dell-precision-t3420/macos-high-sierra-10.13.6/screenshots/Screen_Nvidia_Quadro_K1200.png
+564dc53c43a240fef881c2d548f18f08  configs/dell-precision-t3420/macos-sequoia-15.7/EFI-Dell-Precision-3420.zip
+08f22fdb278a6b2f3fa3ef2422ea720f  configs/dell-precision-t3420/macos-sequoia-15.7/README.md
+1bf317d4b430f0dea90913fbbcf5a46d  configs/dell-precision-t3420/macos-sequoia-15.7/notes/EFI-Dell-Precision-3420.md
 4990017221fc3b6a27bcb962d6b94669  configs/dell-precision-t3420/macos-sierra-10.12.6/EFI_DELL_Precision_T3420_Sierra.zip
 f7e3f5c7bcb3477ebf497e3dec949d9e  configs/dell-precision-t3420/macos-sierra-10.12.6/README.md
 9e04e089bcde1d19eff86eab8e5ae85a  configs/dell-precision-t3420/macos-sierra-10.12.6/notes/Dell_Workstation_T3420.txt
@@ -44,14 +47,16 @@ d1312576e990c08b3c17bf44f6f87da1  configs/gigabyte-ga-h61m-ds2/macos-high-sierra
 acb8017f4ef7fd73bceba71ea1b80631  configs/hp-pavilion-24-b212d/macos-high-sierra-10.13.6/screenshots/Screen_Hardware.png
 96090c9ea66e7a506048cb0bda624f08  configs/hp-pavilion-24-b212d/macos-high-sierra-10.13.6/screenshots/Screen_Hight_Siera_10.13.6.png
 67fbc6fdf3834c8ffb3c6f088edc3309  configs/hp-pavilion-24-b212d/macos-high-sierra-10.13.6/screenshots/Screen_Intel_Gfx_HD_630.png
+705a1846e368b099fd17e5398136b6d2  configs/macpro-late-2013/macos-sequoia-15.x/EFI-Macpro-Late2013-Sequoia.zip
+d62a745bb8d361253ebb9535fee30e8d  configs/macpro-late-2013/macos-sequoia-15.x/README.md
 a178e2bb93d79c7b594bfb95dd8e61ad  docs/CONTRIBUTING.md
-189cd82f1421b88c579665fcdad8f85a  docs/HARDWARE-MATRIX.md
+fea3828e7571d3c5b087969f328464c1  docs/HARDWARE-MATRIX.md
 67dece91dc0b1e72081cd23d14900fee  repo-meta.json
 488b78b476ff7b034cf366713e822302  shared/opencore-any/EFI_OC_Any.zip
 edab18ae106d7aa756784c8965cac6ca  shared/opencore-any/README.md
 d092c4de27814662138f844e5f360a1e  tools/README.md
-34b30a3d57c3cc4291af6c798a178866  tools/apply_patch.py
-1232e9648639f1260595a1dfae998e00  tools/build.py
+eed1c775d9f9aaa38155b909052fbfdc  tools/apply_patch.py
+7632aafc0439fe791b9ec4252e2d3b77  tools/build.py
 4a93d4d47cac279181bbf8d21924e7b5  tools/sync.sh
 9d787fbb9b04466a058baed311d43999  tools/verify_md5.sh
 8566e74646f37163428e6e7ed72201df  upstream/DELL-Precision-T3420-Hight-Sierra/README.md
@@ -67,3 +72,6 @@ aa4c969745254dbdf68a4ff3cf5564a9  upstream/GIGABIYE-GA-H61M-DS2-Catalina/SOURCE.
 613e4537f1d24de3d60a6690149ac887  upstream/GIGABIYE-GA-H61M-DS2-Hight-Sierra/SOURCE.md
 869314619b6f1fe20b699e920c0b8f55  upstream/HP-Pavilion-24-b212d-Z8G27AA-AKL-AIO/README.md
 7dbea54b4f7103d9eaec39d11f432973  upstream/HP-Pavilion-24-b212d-Z8G27AA-AKL-AIO/SOURCE.md
+1bf317d4b430f0dea90913fbbcf5a46d  upstream/local/dell-precision-t3420-sequoia/EFI-Dell-Precision-3420.md
+1069251f47955b134d009c7a4abd0506  upstream/local/dell-precision-t3420-sequoia/SOURCE.md
+1069251f47955b134d009c7a4abd0506  upstream/local/macpro-late-2013-sequoia/SOURCE.md

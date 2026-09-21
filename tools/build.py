@@ -181,14 +181,104 @@ ENTRIES = [
 ]
 
 
+LOCAL_ENTRIES = [
+    dict(
+        vendor="dell-precision-t3420",
+        os_slug="macos-sequoia-15.7",
+        src="local/dell-precision-t3420-sequoia",
+        branch="local",
+        origin="local",
+        src_path=os.path.join(ROOT, "_recon", "local", "dell-precision-t3420-sequoia"),
+        title_th="Dell Precision T3420 (i7-7700 / Intel HD 630) — macOS Sequoia 15.7.9",
+        title_en="Dell Precision T3420 (i7-7700 + Intel HD 630 iGPU) — macOS Sequoia 15.7.9",
+        hw=[
+            ("Machine", "Dell Precision T3420 (i7-7700 + iGPU)"),
+            ("CPU", "Intel Core i7-7700"),
+            ("GPU", "Intel HD Graphics 630 (iGPU) — เร่งความเร็วได้ 1536 MB, Metal 3"),
+            ("SMBIOS", "**MacPro7,1** — ตัวชี้ขาดที่ทำให้สีถูกต้อง (iMac18,3 ทำให้สีเพี้ยน ฟ้า↔ส้ม)"),
+            ("boot-args", "`keepsyms=1 debug=0x100 alcid=11 -no_compat_check -wegnoegpu igfxonln=1 espm=boot`"),
+            ("OpenCore", "1.0.8"),
+            ("Kext", "17 รายการ: Lilu, VirtualSMC(+SMCProcessor/SuperIO/Battery/Light/DellSensors), "
+                     "WhateverGreen, AppleALC/AppleALCU (alcid=11), IntelMausi + IntelMausiEthernet, "
+                     "USBToolBox/UTBDefault, XHCI-unsupported, AMFIPass, RestrictEvents"),
+            ("iGPU properties", "`AAPL,ig-platform-id=00001659` · `device-id=16590000` · "
+                                "`framebuffer-patch-enable` · `framebuffer-con1/-con2-type=HDMI` · "
+                                "`enable-hdmi-dividers-fix` · `framebuffer-stolenmem=00003001` (≈19 MB)"),
+            ("ธีม / Theme", "GoldenGate (`PickerMode=External`, `PickerVariant=Acidanthera\\GoldenGate`)"),
+            ("macOS", "Sequoia 15.7.9 (24G830)"),
+        ],
+        efi=[("EFI-Dell-Precision-3420.zip", "564dc53c43a240fef881c2d548f18f08")],
+        screenshots=[],
+        notes=["EFI-Dell-Precision-3420.md"],
+        observations=[
+            "**จุดสำคัญที่แก้สำเร็จ:** สีเพี้ยน (Framebuffer Depth 30-bit) แก้ด้วยการเปลี่ยน SMBIOS "
+            "จาก `iMac18,3` เป็น **`MacPro7,1`** และอาการจอค้าง/ดับหลังเข้าหน้าจอ แก้ด้วย boot-arg "
+            "**`igfxonln=1`** — ตัวอื่น (เวอร์ชัน OpenCore/Lilu/WhateverGreen, EDID override, "
+            "`agdpmod=ignore`, OCLP) ทดสอบแล้ว **ไม่ใช่สาเหตุ**",
+            "เอกสารต้นฉบับเรียกเครื่องว่า **Dell OptiPlex** (i7-7700 / Intel HD 630) แต่ชื่อไฟล์ EFI "
+            "และโฟลเดอร์ใน zip เป็น **Dell Precision T3420** — ยังไม่ยืนยันว่าเป็นเครื่องเดียวกัน "
+            "หรือเขียนชื่อรุ่นผิด จึงเก็บชื่อตามไฟล์ EFI และคงข้อความเดิมไว้ในเอกสาร",
+            "ค่าที่สกัดจาก `OC/config.plist` ตรงกับเอกสารทุกจุด (SMBIOS, boot-args, ig-platform-id, stolenmem)",
+            "ใน zip มีไฟล์สำรอง `config.plist.bak1..bak22`, `config.plist.presafe-*` และ `_old-kexts/` "
+            "ติดมาด้วย — เก็บไว้ตามต้นฉบับ ไม่ได้ตัดออก",
+            "เครื่องนี้มี 2 EFI ที่สลับเองได้ → ฝัง marker ใน boot-args (`espm=efi` = EFI หลัก, "
+            "`espm=boot` = EFI สำรอง) ชุดนี้เป็น `espm=boot`",
+        ],
+    ),
+    dict(
+        vendor="macpro-late-2013",
+        os_slug="macos-sequoia-15.x",
+        src="local/macpro-late-2013-sequoia",
+        branch="local",
+        origin="local",
+        src_path=os.path.join(ROOT, "_recon", "local", "macpro-late-2013-sequoia"),
+        title_th="Apple Mac Pro (Late 2013) — macOS Sequoia 15.x",
+        title_en="Apple Mac Pro (Late 2013) — macOS Sequoia 15.x",
+        hw=[
+            ("Machine", "Apple Mac Pro (Late 2013)"),
+            ("SMBIOS", "ไม่กำหนดทับ — `PlatformInfo/Generic` ว่าง (ใช้ค่าเดิมของเครื่องจริง)"),
+            ("boot-args", "`keepsyms=1 debug=0x100 -lilubetaall ipc_control_port_options=0 -nokcmismatchpanic`"),
+            ("Drivers", "OpenRuntime.efi, OpenCanopy.efi, OpenLinuxBoot.efi, ResetNvramEntry.efi"),
+            ("Kext", "15 รายการ: Lilu, RestrictEvents, NVMeFix, AMFIPass, AirportBrcmFixup, "
+                     "IOSkywalkFamily, IO80211FamilyLegacy (+AirPortBrcmNIC), CryptexFixup, RSRHelper, "
+                     "AppleIntelCPUPowerManagement(+Client), USB-Map, ECM-Override, CatalinaIntelI210Ethernet, "
+                     "AutoPkgInstaller"),
+            ("ธีม / Theme", "GoldenGate (`PickerMode=External`)"),
+            ("macOS", "Sequoia 15.x — อ้างจากชื่อไฟล์ (ไม่ได้ระบุเลขเวอร์ชันย่อย)"),
+        ],
+        efi=[("EFI-Macpro-Late2013-Sequoia.zip", "705a1846e368b099fd17e5398136b6d2")],
+        screenshots=[],
+        notes=[],
+        observations=[
+            "**ไม่มีเอกสารประกอบในชุดที่อัปโหลด** — ข้อมูลในหน้านี้สกัดจาก `OC/config.plist` "
+            "และรายการไฟล์ใน zip จริง ไม่ได้คัดลอกจากที่อื่น",
+            "ชุดนี้ออกแบบสำหรับ **เครื่อง Mac จริง** (ไม่ตั้ง SMBIOS ทับ) และมีโฟลเดอร์ `APPLE/CACHES` "
+            "พร้อม kext สาย legacy (`CryptexFixup`, `RSRHelper`, `AutoPkgInstaller`, "
+            "`IO80211FamilyLegacy`) → ลักษณะของชุดที่ทำด้วย **OpenCore Legacy Patcher (OCLP)**",
+            "zip ติดไฟล์ metadata ของ macOS (`__MACOSX/`, `._*`, `.DS_Store`) มาด้วย — เก็บตามต้นฉบับ",
+            "ไม่พบ `SystemProductName` ใน config จึงยืนยันรุ่นเครื่องจากไฟล์ไม่ได้ "
+            "นอกจากชื่อไฟล์ที่ระบุ Mac Pro Late 2013",
+        ],
+    ),
+]
+
+
+def all_entries():
+    return ENTRIES + LOCAL_ENTRIES
+
+
 def build_readme(e: dict) -> str:
     lines = []
     lines.append("# " + e["title_th"])
     lines.append("")
     lines.append("> " + e["title_en"])
     lines.append("")
-    lines.append("ต้นทาง: [`" + e["src"] + "`](https://github.com/" + OWNER + "/" + e["src"] + ") "
-                 "(branch `" + e["branch"] + "`)")
+    if e.get("origin") == "local":
+        lines.append("ที่มา: ไฟล์ที่อัปโหลดโดยเจ้าของ repo (local upload) — "
+                     "ข้อมูลสกัดจาก `OC/config.plist` และรายการไฟล์ใน zip จริง")
+    else:
+        lines.append("ต้นทาง: [`" + e["src"] + "`](https://github.com/" + OWNER + "/" + e["src"] + ") "
+                     "(branch `" + e["branch"] + "`)")
     lines.append("")
     lines.append("## ข้อมูลเครื่อง / Hardware")
     lines.append("")
@@ -254,8 +344,8 @@ def main() -> int:
         shutil.rmtree(os.path.join(REPO, d), ignore_errors=True)
 
     # 2) คัดลอกไฟล์ + ตรวจ md5 กับ baseline
-    for e in ENTRIES:
-        src_dir = os.path.join(UP, e["src"])
+    for e in all_entries():
+        src_dir = e.get("src_path") or os.path.join(UP, e["src"])
         if not os.path.isdir(src_dir):
             problems.append("missing upstream: " + e["src"])
             continue
@@ -301,8 +391,8 @@ def main() -> int:
             f.write(build_readme(e))
 
     # 3) upstream/ (สำเนาเอกสารต้นฉบับเพื่อ traceability)
-    for e in ENTRIES:
-        src_dir = os.path.join(UP, e["src"])
+    for e in all_entries():
+        src_dir = e.get("src_path") or os.path.join(UP, e["src"])
         if not os.path.isdir(src_dir):
             continue
         dst = os.path.join(REPO, "upstream", e["src"])
@@ -312,8 +402,11 @@ def main() -> int:
                 shutil.copy2(os.path.join(src_dir, f), os.path.join(dst, norm(f)))
         with open(os.path.join(dst, "SOURCE.md"), "w", encoding="utf-8") as f:
             f.write("# แหล่งที่มา / Source\n\n")
-            f.write("- repo: https://github.com/%s/%s\n" % (OWNER, e["src"]))
-            f.write("- branch: `%s`\n" % e["branch"])
+            if e.get("origin") == "local":
+                f.write("- ที่มา: ไฟล์ที่อัปโหลดโดยเจ้าของ repo (local upload)\n")
+            else:
+                f.write("- repo: https://github.com/%s/%s\n" % (OWNER, e["src"]))
+                f.write("- branch: `%s`\n" % e["branch"])
             f.write("- คัดลอกเมื่อ / copied at: %s\n" % datetime.date.today().isoformat())
             f.write("\nไฟล์ในโฟลเดอร์นี้เป็นสำเนาเอกสารต้นฉบับ (README/txt) ห้ามแก้\n")
 
@@ -335,7 +428,7 @@ def main() -> int:
 
     # 5) README กลาง + TEMPLATE + repo-meta
     rows = []
-    for e in ENTRIES:
+    for e in all_entries():
         hwd = dict(e["hw"])
         def g(*keys):
             for k in keys:
@@ -417,7 +510,7 @@ def main() -> int:
     m.append("")
     m.append("| เครื่อง | macOS | CPU | Chipset | RAM | GPU | Audio | LAN | Storage | Display | EFI |")
     m.append("|---|---|---|---|---|---|---|---|---|---|---|")
-    for e in ENTRIES:
+    for e in all_entries():
         hwd = dict(e["hw"])
 
         def gg(*keys):

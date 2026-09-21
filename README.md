@@ -14,6 +14,8 @@ A consolidated collection of Hackintosh EFI configurations, organized by **machi
 | [Dell Precision T3420](configs/dell-precision-t3420/macos-sierra-10.12.6/README.md) | Sierra 10.12.x | Intel Core i7-7700 (Quad Core, 8MB Cache, 3.6GHz, Turbo up to 4.20GHz) | NVIDIA Quadro K1200 4GB (4 x mDP, Low Profile) | Integrated (Onboard) | - |
 | [Dell Precision T7450 AIO (23.8" All-in-One)](configs/dell-precision-t7450-aio/macos-high-sierra-10.13.6/README.md) | High Sierra 10.13.6 | Intel Core i5-7500 | Intel HD Graphics 630 (ใช้ได้) | - | - |
 | [HP Pavilion 24-b212d Z8G27AA#AKL (23.8" All-in-One)](configs/hp-pavilion-24-b212d/macos-high-sierra-10.13.6/README.md) | High Sierra 10.13.6 | Intel Core i5-7400T 2.4GHz | Intel HD Graphics 630 — ใช้งานได้ | - | - |
+| [Dell Precision T3420 (i7-7700 + iGPU)](configs/dell-precision-t3420/macos-sequoia-15.7/README.md) | Sequoia 15.7.9 (24G830) | Intel Core i7-7700 | Intel HD Graphics 630 (iGPU) — เร่งความเร็วได้ 1536 MB, Metal 3 | - | - |
+| [Apple Mac Pro (Late 2013)](configs/macpro-late-2013/macos-sequoia-15.x/README.md) | Sequoia 15.x — อ้างจากชื่อไฟล์ (ไม่ได้ระบุเลขเวอร์ชันย่อย) | - | - | - | - |
 
 ## โครงสร้าง / Layout
 
