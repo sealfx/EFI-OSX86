@@ -1,0 +1,19 @@
+{
+  "name": "EFI-OSX86",
+  "description": "รวม EFI Hackintosh (OSX86) สำหรับ Gigabyte GA-H61M-DS2, Dell Precision T3420/T7450 AIO, HP Pavilion 24-b212d — Catalina 10.15.4 / High Sierra 10.13.6 / Sierra 10.12.x",
+  "homepage": "",
+  "topics": [
+    "hackintosh",
+    "efi",
+    "opencore",
+    "clover",
+    "osx86",
+    "macos",
+    "catalina",
+    "high-sierra",
+    "sierra",
+    "kexts",
+    "efi-config"
+  ],
+  "default_branch": "main"
+}

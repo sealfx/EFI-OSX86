@@ -1,0 +1,10 @@
+Dell Workstation T3420
+CPU	Intel® Core™ i7-7700  (Quad Core, 8MB Cache, 3.6GHz, Turbo upto 4.20GHz)
+Chipset	Intel® C236 Chipset
+RAM	16GB (1X16GB) 2400MHz DDR4 UDIMM Non-ECC
+Optical drive	DVD-/+RW 8x
+Graphic NVIDIA Quadro K1200 4GB, (4 mDP) Low Profile
+Sound	Integrated
+Wireless/BT	None
+
+Hackintosh OSX Sierra 10.12.3
