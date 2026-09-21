@@ -1,56 +1,62 @@
-# สรุปงาน (ฉบับสมบูรณ์): Dell OptiPlex + Intel HD 630 + macOS Sequoia — **แก้สำเร็จ** ✅
+# สรุปงานฉบับสมบูรณ์: Dell (i7-7700 / Intel HD 630) + macOS Sequoia 15.7.9 — EFI / กราฟิก / ธีม / พอร์ต
 
-_อัปเดตล่าสุด: 2026-09-22 02:00 (+07)_
+_อัปเดตล่าสุด: 2026-09-22 04:40 (+07)_
 
-## 1) ผลลัพธ์
-เครื่อง **Dell OptiPlex (i7-7700 / Intel HD 630)** บน **macOS Sequoia 15.7.9 (24G830)**
-→ **เปิด accel ได้ (1536 MB, Metal 3) และสีถูกต้อง** ทั้งคู่พร้อมกัน
-
-## 2) กุญแจสำคัญ (root cause ที่เจอ)
-| อาการ | สาเหตุที่แท้จริง | วิธีแก้ |
-|---|---|---|
-| สีเพี้ยน ฟ้า↔ส้ม / จอเขียว / `Framebuffer Depth = 30-bit` | **SMBIOS (board-id) `iMac18,3`** ทำให้ macOS จัดท่อจอ/สีผิด | เปลี่ยนเป็น **`MacPro7,1`** → **สีถูก** |
-| จอค้าง/ดับหลังเข้าหน้าจอ (เหลือแต่ Cursor) | สถานะจอถูกตัดเป็น offline | boot-arg **`igfxonln=1`** (force display online) |
-
-## 3) ค่าที่ใช้งานจริงตอนนี้ (ทั้ง EFI หลักและ EFI สำรอง)
-| รายการ | ค่า |
+## 1) ผลลัพธ์สุดท้าย
+| หัวข้อ | สถานะ |
 |---|---|
-| SMBIOS | **MacPro7,1** |
-| boot-args | `keepsyms=1 debug=0x100 alcid=11 -no_compat_check -wegnoegpu igfxonln=1` (+ marker `espm=efi` / `espm=boot`) |
-| iGPU DeviceProperties | `AAPL,ig-platform-id = 00001659` (HD 620) · `device-id = 16590000` · `enable-hdmi-dividers-fix` · `framebuffer-con1/-con2-type = HDMI` · `framebuffer-patch-enable` · `framebuffer-stolenmem = 19 MB` |
-| OpenCore | **1.0.8** (+ `BOOTx64.efi`, `OpenRuntime.efi`, `OpenCanopy.efi`, `ResetNvramEntry.efi`) |
-| Lilu / WhateverGreen | **1.7.2 / 1.7.0** = เวอร์ชันล่าสุดบน GitHub |
-| kext อื่น | AMFIPass, VirtualSMC(+SMC*), AppleALC(alcid=11), IntelMausi(Ethernet), RestrictEvents, USBToolBox/UTBDefault, XHCI-unsupported |
-| ธีม OpenCore | **GoldenGate** (`Misc/Boot/PickerMode = External`, `PickerVariant = Acidanthera\GoldenGate`) — **ไม่แตะ `OpenCore.efi`** |
-| จอ | DELL E2216H 1920×1080 @60Hz (ผ่าน HDMI→VGA) |
+| จอแสดงผล | ✅ **1 จอ** ใช้งานได้ (DP → DELL) — **สลับไปพอร์ต DP อีกช่องก็ใช้ได้** ✓ |
+| **สีถูกต้อง** | ✅ **แก้สำเร็จ** (สาเหตุคือ SMBIOS) |
+| iGPU acceleration | ✅ 1536 MB · Metal 3 · ลื่น |
+| ธีม OpenCore | ✅ GoldenGate (ไม่แตะ `OpenCore.efi`) |
+| 2 จอ (HDMI + DP) | ❌ ทำไม่ได้บน BIOS/การเดินสายของเครื่องนี้ (ทดลองครบแล้ว — ดูข้อ 4) |
+| พอร์ต USB 3.0 | ❌ macOS ไม่สร้างพอร์ต SuperSpeed (ดูข้อ 5) |
 
-## 4) ที่ทดลองแล้ว "ไม่ใช่สาเหตุ" (บันทึกไว้ ไม่ต้องลองซ้ำ)
-- เวอร์ชัน OpenCore/Lilu/WhateverGreen (ทดสอบ 3 ชุด: 1.7.0/1.7.2 → 1.6.9 → 1.6.8 + OC 1.0.6/1.0.7) — depth ยัง 30-bit เท่าเดิม
-- EDID override ที่ `/Library/Displays/...` (macOS ไม่อ่าน — พิสูจน์ด้วย EDID ที่ระบบใช้จริง)
-- `framebuffer-con0-type = DVI` (จอไม่ขึ้น) / DP (คอนเนกเตอร์ผิด → จอดำ)
-- `disable-agdc`, `AAPL,GfxYTile`, `agdpmod=ignore`, `igfxfcms=1`
-- ลบ `framebuffer-fbmem`/`stolenmem` → ค้าง
-- OCLP 2.5.1 → "No Root Patches required"
-- SMBIOS `iMac18,1` → จอดำ (รุ่น all-in-one ไม่ตรงกับเครื่อง)
+## 2) กุญแจสำคัญ (root cause) ที่แก้สำเร็จ
+| อาการ | สาเหตุจริง | วิธีแก้ |
+|---|---|---|
+| สีเพี้ยน ฟ้า↔ส้ม / จอเขียว / depth 30-bit | **SMBIOS (board-id) `iMac18,3`** | เปลี่ยนเป็น **`MacPro7,1`** → สีถูก |
+| จอดับ/ค้างหลังเข้าหน้าจอ | สถานะจอ offline | boot-arg **`igfxonln=1`** |
 
-## 5) บทเรียนการทำงาน (สำคัญสำหรับครั้งหน้า)
-- เครื่องนี้มี **2 EFI** ที่ผู้ใช้สลับเองได้ → ฝัง **marker** ใน boot-args ทุกครั้ง:
-  `espm=efi` = EFI หลัก (disk0s1) · `espm=boot` = EFI สำรอง (disk0s2 `BOOT`)
-- **ตรวจ marker ก่อนสรุปผลทุกครั้ง:** `nvram boot-args | grep -o 'espm=[a-z]*'`
-- ตรวจผลที่เชื่อถือได้: `system_profiler SPDisplaysDataType` · `kmutil showloaded | grep -iE 'lilu|whatevergreen|KBL'` · `nvram boot-args`
-- ⚠️ ESP ถูก unmount ทุกครั้งหลังรีบูต → ต้อง `sudo diskutil mount disk0s1` ก่อนแก้ไฟล์
+## 3) EFI 2 ชุด (ใช้งานจริง)
+| | EFI หลัก (`/Volumes/EFI`) | EFI สำรอง (`/Volumes/BOOT`) |
+|---|---|---|
+| marker | `espm=efi` | `espm=boot` |
+| config | **HD620 + `con1-type=HDMI` + `con2-type=DP`** (แบบ `-type` ธรรมดา — **DP ขึ้น ✓**) | **ชุดเดียวกันเป๊ะ** (ต่างแค่ marker) ✓ |
+| OpenCore / Lilu / WG | 1.0.8 / 1.7.2 / 1.7.0 | เท่ากัน |
+| SMBIOS / args | MacPro7,1 · `igfxonln=1` | เท่ากัน |
+| ธีม | GoldenGate | GoldenGate |
 
-## 6) ไฟล์สำรอง / ที่เก็บของ
+> ตรวจว่าบูทจากตัวไหน: `nvram boot-args | grep -o 'espm=[a-z]*'`
+
+## 4) แผนผังพอร์ตกราฟิกของเครื่องนี้ (ค้นพบจริง)
+- macOS สร้างคอนเนกเตอร์ 3 ตัว → **port 5, 6, 7**
+- **พอร์ต DP ของเครื่องใช้ได้ ✓** (จอ DELL ขึ้น — สลับไปพอร์ต DP อีกช่องก็ยังใช้ได้)
+- **พอร์ต HDMI ของเครื่อง: ขับด้วย macOS ไม่ได้** — ลอง type HDMI ที่ port 5 และ port 7 แล้วไม่ขึ้นทั้งคู่ (น่าจะเป็นข้อจำกัด BIOS/VBT)
+- **สิ่งที่ทำให้จอดับ: `-alldata` + การประกาศ 3 คอนเนกเตอร์** ⇒ กลับมาใช้แบบ `-type` ธรรมดา (con1=HDMI, con2=DP) แล้วเสถียร ✓
+- ทดลอง 2 จอครบทุกมุมแล้ว: โปรไฟล์ desktop/HD620, SMBIOS iMac18.1/MacPro7.1, `-alldata` 3 แบบ ⇒ **ได้ 1 จอเสมอ**
+- ตัวเลือกที่ยังไม่ได้ลอง (ถ้าอยากสู้ต่อในอนาคต): SMBIOS **Macmini8,1** (รุ่นที่ iGPU ขับจอเองโดยไม่มี dGPU)
+
+## 5) ปัญหา USB 3.0 (สรุปไว้ทำต่อ)
+- macOS สร้างพอร์ต **USB2 (XHCI) 15 พอร์ต** แต่ **USB3 SuperSpeed = 0** ⇒ อุปกรณ์ USB3 (ฮาร์ดดิสก์) ไม่ถูกตรวจพบบนพอร์ต 3.0
+- สาเหตุ: ข้อจำกัด 15 พอร์ต/คอนโทรลเลอร์ + `UTBDefault.kext` **ไม่มีข้อมูลพอร์ต** (placeholder เปล่า)
+- วิธีแก้: สร้าง **USB port map จริง** (USBToolBox) แล้วแทน `UTBDefault.kext` — ต้อง map บนเครื่องที่เห็นพอร์ตครบ (Windows) หรือ map มือจาก ioreg
+- ชั่วคราว: ต่ออุปกรณ์ USB3 เข้าพอร์ต USB2 (สีดำ) จะใช้ได้ (ความเร็ว USB2)
+
+## 6) สิ่งที่ทดลองแล้ว **ไม่ใช่สาเหตุ** (อย่าลองซ้ำ)
+- เวอร์ชัน OpenCore/Lilu/WG (ทดสอบ 1.7.2/1.7.0 → 1.6.9 → 1.6.8 + OC 1.0.7/1.0.6)
+- EDID override ที่ `/Library/Displays` (macOS ไม่อ่าน)
+- `-igfxvesa`, DVI/DP connector typing รอบแรกๆ, `disable-agdc`, `AAPL,GfxYTile`, `agdpmod=ignore`, `igfxfcms=1`, ลบ memory patch (ค้าง), OCLP 2.5.1 ("No Root Patches required"), `-igfxonlnfbs`
+
+## 7) ไฟล์/ที่เก็บ
 | ที่ | อะไร |
 |---|---|
-| `/Volumes/EFI/EFI.bak-v17-20260922-013655` | EFI หลักก่อนคืนค่าชุดที่ใช้ได้ |
-| `/Volumes/EFI/EFI.backup-20260922-011838` | EFI หลัก (ชุดทดลองเก่า) |
-| `/Volumes/BOOT/EFI.backup-20260922-011435` | EFI สำรอง (ก่อนแก้) |
-| `OC/Kexts/_old-kexts/` | Lilu/WG เวอร์ชันทดลอง (1.6.9 / 1.6.8 / เดิม) |
-| `OC/config.plist.bak*`, `config.plist.presafe-*` | ประวัติ config ทุกเวอร์ชัน |
-| workspace `.openclaw/tmp/gui/` | สคริปต์ (`mkconfig.py`, `mkvariant.py`, `mkedidoverride.py`) + config ทุกเวอร์ชัน + `override/EDID.orig.hex` |
+| `OC/config.plist.bak*` (EFI หลัก) | ประวัติ config ทุกเวอร์ชัน (bak32 = ชุด DP ✓, bak33 = ปัจจุบัน) |
+| `/Volumes/EFI/EFI.backup-*`, `EFI.bak-v17-*` | สำรอง EFI ทั้งชุด |
+| `/Volumes/BOOT/EFI.backup-20260922-011435` | สำรอง EFI สำรอง |
+| `OC/Kexts/_old-kexts/` | Lilu/WG เวอร์ชันทดลอง |
+| workspace `.openclaw/tmp/gui/` | สคริปต์ + config ทุกเวอร์ชัน + EDID ต้นฉบับ |
 
-## 7) คำแนะนำต่อ
-- ถ้าจะอัปเดต macOS ในอนาคต ให้ตรวจ **SMBIOS `MacPro7,1`** และ **`igfxonln=1`** ว่ายังอยู่ (สองตัวนี้คือหัวใจ)
-- ถ้าจะอัป OpenCore: ใช้ชุด VERSION เดียวกันทั้งชุด (OpenCore.efi + BOOTx64.efi + drivers) และอัป Lilu ให้ ≥ ที่ WhateverGreen ต้องการ
-- สำหรับ Theme: `Resources/Image/Acidanthera/GoldenGate` มีอยู่แล้ว; ธีมอื่น (Chardonnay/Syrah) โหลด `Resources` จาก OpenCorePkg มาเพิ่มได้
+## 8) หมายเหตุสำหรับอนาคต
+- **อย่าลืม 2 ตัวนี้ถ้าอัป macOS**: SMBIOS `MacPro7,1` และ boot-arg `igfxonln=1` (หัวใจของ setup นี้)
+- อัป OpenCore: ใช้ drivers ชุด version เดียวกัน (OpenCore.efi + BOOTx64.efi + drivers)

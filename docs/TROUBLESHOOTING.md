@@ -34,14 +34,31 @@
 | ต้นเหตุ | สถานะจอถูกตัดเป็น offline |
 | วิธีแก้ | boot-arg **`igfxonln=1`** (force display online) |
 
+**(ค) พอร์ตจอของเครื่องนี้ (ค้นพบจริง)**
+
+- macOS สร้างคอนเนกเตอร์ 3 ตัว → port 5, 6, 7
+- **พอร์ต DP ใช้ได้** (DELL E2216H ขึ้นภาพ, สลับไป DP ช่องที่สองก็ใช้ได้)
+- **พอร์ต HDMI ขับด้วย macOS ไม่ได้** — ลองประกาศ type HDMI ที่ port 5 และ port 7 แล้วไม่ขึ้นทั้งคู่
+  (น่าจะเป็นข้อจำกัด BIOS/VBT) ⇒ **ได้ 1 จอเสมอ จากการทดลองทุกมุม**
+- ❗ **`-alldata` + ประกาศ 3 คอนเนกเตอร์ ทำให้จอดับ** — ให้ใช้แบบ `-type` ธรรมดา (con1=HDMI, con2=DP)
+- ตัวเลือกที่ยังไม่ได้ลอง: SMBIOS `Macmini8,1`
+
+**(ง) USB 3.0 ไม่ทำงาน**
+
+| | |
+|---|---|
+| อาการ | macOS สร้างพอร์ต USB2 (XHCI) 15 พอร์ต แต่ **SuperSpeed = 0** → ฮาร์ดดิสก์ USB3 ไม่ถูกตรวจพบบนพอร์ต 3.0 |
+| ต้นเหตุ | ข้อจำกัด 15 พอร์ต/คอนโทรลเลอร์ + `UTBDefault.kext` เป็น placeholder ที่ไม่มีข้อมูลพอร์ต |
+| วิธีแก้ | สร้าง **USB port map จริง** ด้วย USBToolBox แล้วแทน `UTBDefault.kext` (ต้อง map บนเครื่องที่เห็นพอร์ตครบ หรือ map มือจาก `ioreg`) |
+| ชั่วคราว | ต่ออุปกรณ์ USB3 เข้าพอร์ต USB2 (ดำ) — ใช้ได้ที่ความเร็ว USB2 |
+
 **ทดสอบแล้ว "ไม่ใช่สาเหตุ" — ไม่ต้องลองซ้ำ**
-- เวอร์ชัน OpenCore / Lilu / WhateverGreen (ทดสอบ 3 ชุด: 1.7.0/1.7.2 → 1.6.9 → 1.6.8 + OC 1.0.6/1.0.7)
+- เวอร์ชัน OpenCore / Lilu / WhateverGreen (1.7.2/1.7.0 → 1.6.9 → 1.6.8 + OC 1.0.7/1.0.6)
 - EDID override ที่ `/Library/Displays/...`
-- `framebuffer-con0-type = DVI` (จอไม่ขึ้น) / `DP` (จอดำ)
-- `disable-agdc`, `AAPL,GfxYTile`, `agdpmod=ignore`, `igfxfcms=1`
+- `-igfxvesa`, `disable-agdc`, `AAPL,GfxYTile`, `agdpmod=ignore`, `igfxfcms=1`, `-igfxonlnfbs`
 - ลบ `framebuffer-fbmem` / `stolenmem` → ค้าง
 - OCLP 2.5.1 → "No Root Patches required"
-- SMBIOS `iMac18,1` → จอดำ
+- SMBIOS `iMac18,1` → จอดำ · `framebuffer-con0-type = DVI` (จอไม่ขึ้น) / `DP` (จอดำ)
 
 **บทเรียนการทำงานของเครื่องนี้**
 - มี **2 EFI** สลับกันได้ → ฝัง marker ใน boot-args: `espm=efi` (EFI หลัก disk0s1) / `espm=boot` (EFI สำรอง disk0s2)
